@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/Button.dart';
+import 'package:toonflix/widgets/currency_card.dart';
 
 class Player {
   String name = 'nico';
@@ -17,74 +18,125 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFF181818),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 46,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Hey, Hyeok",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 33,
-                          fontWeight: FontWeight.w800,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 46,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text(
+                          "Hey, Hyeok",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 33,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "WelcomeBack",
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: 20,
+                        Text(
+                          "WelcomeBack",
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 100,
-              ),
-              Text(
-                'Totoal Balance',
-                style: TextStyle(
-                    fontSize: 22, color: Colors.white.withOpacity(0.8)),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                '\$5 194 382',
-                style: TextStyle(
-                    fontSize: 48,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white.withOpacity(0.8)),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Button(
-                      text: 'Transfer',
-                      bgColor: Color(0xFFF1B33B),
-                      textColor: Colors.black),
-                  Button(
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
+                Text(
+                  'Totoal Balance',
+                  style: TextStyle(
+                      fontSize: 22, color: Colors.white.withOpacity(0.8)),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  '\$5 194 382',
+                  style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white.withOpacity(0.8)),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Button(
+                        text: 'Transfer',
+                        bgColor: Color(0xFFF1B33B),
+                        textColor: Colors.black),
+                    Button(
                       text: 'Request',
                       bgColor: Color(0xFF1F2123),
-                      textColor: Colors.white),
-                ],
-              )
-            ],
+                      textColor: Colors.white,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Wallets',
+                      style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white.withOpacity(0.8),
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CurrencyCard(
+                  name: 'Euro',
+                  code: 'EUR',
+                  amount: '6 428',
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                  offset: 0,
+                ),
+                const CurrencyCard(
+                    name: 'Bitcoin',
+                    code: 'BTC',
+                    amount: '9 785',
+                    icon: Icons.currency_bitcoin,
+                    isInverted: true,
+                    offset: -20),
+                const CurrencyCard(
+                    name: 'Dollar',
+                    code: 'USD',
+                    amount: '428',
+                    icon: Icons.attach_money_outlined,
+                    isInverted: false,
+                    offset: -40),
+              ],
+            ),
           ),
         ),
       ),
