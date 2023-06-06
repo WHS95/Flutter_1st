@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
+import 'package:toonflix/widget/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -15,8 +16,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 1, //음영
-        backgroundColor:
-            const Color.fromARGB(255, 112, 106, 106).withOpacity(1), //배경색
+        backgroundColor: Colors.green,
         foregroundColor: Colors.white, //타이틀
         title: const Text(
           "Today's WebToon",
@@ -52,37 +52,8 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         itemBuilder: (context, index) {
           var webtoon = furturResult.data![index];
-          return Column(
-            children: [
-              const SizedBox(height: 30),
-              Container(
-                width: 180,
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 15,
-                        offset: const Offset(3, 3),
-                        color: Colors.black.withOpacity(0.5),
-                      )
-                    ]),
-                child: Image.network(
-                  webtoon.thumb,
-                  headers: const {
-                    "User-Agent":
-                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(webtoon.title,
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.w600)),
-            ],
-          );
+          return Webtoon(
+              title: webtoon.title, thumb: webtoon.thumb, id: webtoon.id);
         },
         separatorBuilder: (context, index) => const SizedBox(width: 20));
   }
